@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>jFirm, Customisable HTML Fields, jQuery Plugin</title>
+	<title>JAYSUN, Play nice with JSON, jQuery Plugin</title>
 	<link rel="stylesheet" href="css/main.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
@@ -14,13 +14,14 @@
 	<script>
 		
 		$(document).ready(function(){
+	
+			var json = $('.json').html();
+			jsonObj = $.parseJSON(json);
 			
-			$('.jFirmClick').jFirm({
-				title: 'Hello World',
-				content: 'This is just another modal window....',
-				cancel: 'Cancel',
-				confirm: 'Confirm'
-			});
+			JSONFormatter.format(jsonObj, {
+			  collapse: true, // Setting to 'true' this will format the JSON into a collapsable/expandable tree
+			  element: '.json', // A string of the id, class or element name to append the formatted json
+			})
 			
 		});
 		
@@ -38,7 +39,7 @@
 		
 			<h2>Usage</h2>
 			
-			<p>Using jFirm is as simple as 1, 2, 3... Just follow the examples below or download the Github example.</p>
+			<p>Using JAYSUN is as simple as 1, 2, 3... Just follow the examples below or download the Github example.</p>
 		
 			<h2>JavaScript</h2>
 			
