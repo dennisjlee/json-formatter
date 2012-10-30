@@ -186,9 +186,13 @@ JSONFormatter = (function(){
         }
         
       }
-      else {
+      else 
+      {
+      
         $('#' + settings.listID).append('<li><i>' + key + ':</i> ' + val + '</li>');
+        
       }
+      
     });
     
     addClosingBraces();
