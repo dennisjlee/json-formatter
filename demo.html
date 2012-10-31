@@ -8,20 +8,17 @@
 	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 	
 	<!-- Include the plugin files -->
-	<link rel="stylesheet" href="src/JSONFormatter.css" />
-	<script src="src/JSONFormatter.js"></script>
+	<link rel="stylesheet" href="src/jaysun.css" />
+	<script src="src/jaysun.1.0.js"></script>
 	
 	<script>
 		
 		$(document).ready(function(){
-	
-			var json = $('.json').html();
-			jsonObj = $.parseJSON(json);
 			
-			JSONFormatter.format(jsonObj, {
+			$('.json').Jaysun({
 			  collapse: true, // Setting to 'true' this will format the JSON into a collapsable/expandable tree
-			  element: '.json', // A string of the id, class or element name to append the formatted json
-			})
+			  closed:false //This only is valid if collapse is true, sets if the objects are visible or not
+			});
 			
 		});
 		
@@ -43,25 +40,17 @@
 		
 			<h2>JavaScript</h2>
 			
+			<p>Initiate the jQuery function poiting the function to the element containing the unformatted JSON string.</p>
+			
 			<pre>
 $(document).ready(function(){
 			
-	$('.jFirmClick').jFirm({
-		title: 'Hello World',
-		content: 'Hello World This is a confirm.',
-		cancel: 'Cancel',
-		confirm: 'Confirm'
+	$('.json').Jaysun({
+	  collapse: true, // Setting to 'true' this will format the JSON into a collapsable/expandable tree
+	  closed:false //This only is valid if collapse is true, sets if the objects are visible or not
 	});
 	
 });
-</pre>
-		
-			<h2>HTML</h2>
-			
-<pre>
-
-&lt;a href="javascript:{}" class="jFirmClick">Click me!&lt;/a>
-
 </pre>
 						
 			<h2>Preview</h2>
