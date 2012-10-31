@@ -13,7 +13,10 @@
     var defaults = {
       'listID' : 'json',
       'collapse' : false,
-      'closed': false
+      'closed': false,
+      'closeIcon': ' &#9658; ',
+      'openIcon': ' &#9660; ',
+      'resultElement': '#' + $(this).attr('id')
     }
     
     var options = $.extend(defaults, options);
@@ -34,21 +37,21 @@
         // object of objects
         if(typeof v3 == 'object'){
         
-          $('#' + options.listID + ' #' + ulId).append('<li><span>{</span> <ul id="' + ulId + '-' + k3 + '"></ul></li>');
+          $(options.resultElement + ' #' + options.listID + ' #' + ulId).append('<li><span>{</span> <ul id="' + ulId + '-' + k3 + '"></ul></li>');
           
           $.each(v3, function(k4, v4){
           
             if(typeof v4 == 'object' && v4 != null) 
             {
             
-              $('#' + options.listID + ' #' + ulId + '-' + k3).append('<li>' + k4 + ' <span>{</span> <ul id="' + k4 + '-' + loopCount + '"></ul></li>');
+              $(options.resultElement + ' #' + options.listID + ' #' + ulId + '-' + k3).append('<li>' + k4 + ' <span>{</span> <ul id="' + k4 + '-' + loopCount + '"></ul></li>');
               loopAgain(v4, k4, k4 + '-' + loopCount);
             
             }
             else 
             {
             
-              $('#' + options.listID + ' #' + ulId + '-' + k3).append('<li>' + k4 + ': ' + v4 + '</li>');
+              $(options.resultElement + ' #' + options.listID + ' #' + ulId + '-' + k3).append('<li>' + k4 + ': ' + v4 + '</li>');
               
             }
 
@@ -59,7 +62,7 @@
         {
         
           // normal array
-          $('#' + options.listID + ' #' + ulId).append('<li>' + v3 + '</li>');
+          $(options.resultElement + ' #' + options.listID + ' #' + ulId).append('<li>' + v3 + '</li>');
           
         }
         
@@ -83,14 +86,14 @@
           {
           
             // an empty object, just output that
-            $('#' + options.listID + ' #' + ulId).append('<li><i>' + nextKey + ':</i> {}</li>');
+            $(options.resultElement + ' #' + options.listID + ' #' + ulId).append('<li><i>' + nextKey + ':</i> {}</li>');
             
           } 
           else if(nextVal.length >= 1)
           {
           
             // an object of objects
-            $('#' + options.listID + ' #' + ulId).append('<li><b>' + nextKey + ':</b> <span>{</span> ' + newList + '</li>');
+            $(options.resultElement + ' #' + options.listID + ' #' + ulId).append('<li><b>' + nextKey + ':</b> <span>{</span> ' + newList + '</li>');
             loopObjectOfObjects(nextVal, nextListId);
             
           }
@@ -98,7 +101,7 @@
           {
           
             // next node
-            $('#' + options.listID + ' #' + ulId).append('<li><b>' + nextKey + ':</b> <span>{</span> ' + newList + '</li>');
+            $(options.resultElement + ' #' + options.listID + ' #' + ulId).append('<li><b>' + nextKey + ':</b> <span>{</span> ' + newList + '</li>');
             loopAgain(nextVal, nextKey, nextListId);
             
           }  
@@ -107,7 +110,7 @@
         else
         {
         
-            $('#' + options.listID + ' #' + ulId).append('<li><i>'+ nextKey + ':</i> ' + nextVal + '</li>');
+            $(options.resultElement + ' #' + options.listID + ' #' + ulId).append('<li><i>'+ nextKey + ':</i> ' + nextVal + '</li>');
             
         }
         
@@ -118,7 +121,7 @@
     var addClosingBraces = function()
     {
     
-      $('#' + options.listID + ' span').each(function(){
+      $(options.resultElement + ' #' + options.listID + ' span').each(function(){
       
         var closingBrace = '<span>}</span>';
         
@@ -180,21 +183,21 @@
         if(goObj) 
         {
         
-          $('#' + options.listID).append('<li><b>' + key + ':</b> <span>{</span><ul id="' + nk + '-' + loopCount + '"></ul></li>');
+          $(options.resultElement + ' #' + options.listID).append('<li><b>' + key + ':</b> <span>{</span><ul id="' + nk + '-' + loopCount + '"></ul></li>');
           loopObjectOfObjects(val, nk + '-' + loopCount);
         
         }
         else if(goArray) 
         {
         
-          $('#' + options.listID).append('<li><b>' + key + ':</b> <span>{</span><ul id="' + nk + '-' + loopCount + '"></ul></li>');
+          $(options.resultElement + ' #' + options.listID).append('<li><b>' + key + ':</b> <span>{</span><ul id="' + nk + '-' + loopCount + '"></ul></li>');
           loopAgain(val, nk, nk + '-' + loopCount);
           
         }
         else 
         {
         
-          $('#' + options.listID).append('<li><b>' + key + ':</b> <span>{</span><ul id="' + key + '-' + loopCount + '"></ul></li>');
+          $(options.resultElement + ' #' + options.listID).append('<li><b>' + key + ':</b> <span>{</span><ul id="' + key + '-' + loopCount + '"></ul></li>');
           loopAgain(val, key, key + '-' + loopCount);  
                       
         }
@@ -203,7 +206,7 @@
       else 
       {
       
-        $('#' + options.listID).append('<li><i>' + key + ':</i> ' + val + '</li>');
+        $(options.resultElement + ' #' + options.listID).append('<li><i>' + key + ':</i> ' + val + '</li>');
         
       }
       
@@ -212,9 +215,9 @@
 	var addToggles = function(listId, options)
 	{
 	
-		$('#' + listId + " > li").find('ul').each(function(){
+		$(options.resultElement + ' #' + listId + " > li").find('ul').each(function(){
 		
-		  $(this).parent().find('span').eq(0).before('<span class="toggle fake-link"> &#9660; </span>');
+		  $(this).parent().find('span').eq(0).before('<span class="toggle fake-link"> ' + options.openIcon + ' </span>');
 		  
 		});
 		
@@ -222,24 +225,24 @@
 		{
 		    
 		    $('.toggle').next().next().hide();
-		    $('.toggle').html(' &#9658; ');
+		    $('.toggle').html(options.closeIcon);
 		    
 		}
 		
 		$('.toggle').live('click', function() {
 		
-		  if($(this).next().next().is(":visible"))
+		  if($(this).next().next().is(':visible'))
 		  {
 		  
 		    $(this).next().next().hide();
-		    $(this).html(' &#9658; ')
+		    $(this).html(options.closeIcon);
 		    
 		  }
 		  else 
 		  {
 		  
 		    $(this).next().next().show();
-		    $(this).html(' &#9660; ');
+		    $(this).html(options.openIcon);
 		    
 		  }
 		  

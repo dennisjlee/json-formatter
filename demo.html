@@ -20,6 +20,10 @@
 			  closed:false //This only is valid if collapse is true, sets if the objects are visible or not
 			});
 			
+			$('.json2').Jaysun({
+			  collapse: false // Setting to 'true' this will format the JSON into a collapsable/expandable tree
+			});
+			
 		});
 		
 	</script>
@@ -36,11 +40,9 @@
 		
 			<h2>Usage</h2>
 			
-			<p>Using JAYSUN is as simple as 1, 2, 3... Just follow the examples below or download the Github example.</p>
+			<p>Using JAYSUN is as simple as 1, 2, 3... Initiate the jQuery function poiting the function to the element containing the unformatted JSON string.</p>
 		
 			<h2>JavaScript</h2>
-			
-			<p>Initiate the jQuery function poiting the function to the element containing the unformatted JSON string.</p>
 			
 			<pre>
 $(document).ready(function(){
@@ -53,30 +55,136 @@ $(document).ready(function(){
 });
 </pre>
 						
-			<h2>Preview</h2>
+			<h2>Unformatted</h2>
 			
-			<div class="json">
+			<div class="jsonExample">
 				{
-    "glossary": {
-        "title": "example glossary",
-		"GlossDiv": {
-            "title": "S",
-			"GlossList": {
-                "GlossEntry": {
-                    "ID": "SGML",
-					"SortAs": "SGML",
-					"GlossTerm": "Standard Generalized Markup Language",
-					"Acronym": "SGML",
-					"Abbrev": "ISO 8879:1986",
-					"GlossDef": {
-                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-						"GlossSeeAlso": ["GML", "XML"]
-                    },
-					"GlossSee": "markup"
-                }
-            }
-        }
+  "page": 1,
+  "pages": 1,
+  "per_page": 15,
+  "total": 2,
+  "shots": [
+    {
+      "id": 48351,
+      "title": "Slow and steady wins the race.",
+      "url": "http://dribbble.com/shots/48351-Slow-and-steady-wins-the-race",
+      "short_url": "http://drbl.in/48351",
+      "image_url": "http://dribbble.com/system/users/1/screenshots/48351/shot_1282591933.png",
+      "image_teaser_url": "http://dribbble.com/system/users/1/screenshots/48351/shot_1282591933_teaser.png",
+      "width": 400,
+      "height": 300,
+      "views_count": 864,
+      "likes_count": 24,
+      "comments_count": 13,
+      "rebounds_count": 0,
+      "rebound_source_id": 43424,
+      "created_at": "2010/08/23 15:32:13 -0400",
+      "player": {
+        "id": 1,
+        "name": "Dan Cederholm",
+        "username": "simplebits",
+        "url": "http://dribbble.com/simplebits",
+        "avatar_url": "http://dribbble.com/system/users/1/avatars/original/dancederholm-peek.jpg",
+        "location": "Salem, MA",
+        "twitter_screen_name": "simplebits",
+        "drafted_by_player_id": null,
+        "shots_count": 147,
+        "draftees_count": 103,
+        "followers_count": 2027,
+        "following_count": 354,
+        "created_at": "2009/07/07 21:51:22 -0400"
+      }
+    },
+    ...
+  ]
+}
+				
+			</div>
+			
+			<h2>With JAYSUN (Collapsable)</h2>
+			
+			<div class="json" id="json">
+{
+  "page": 1,
+  "pages": 1,
+  "per_page": 15,
+  "total": 2,
+  "shots": [
+    {
+      "id": 48351,
+      "title": "Slow and steady wins the race.",
+      "url": "http://dribbble.com/shots/48351-Slow-and-steady-wins-the-race",
+      "short_url": "http://drbl.in/48351",
+      "image_url": "http://dribbble.com/system/users/1/screenshots/48351/shot_1282591933.png",
+      "image_teaser_url": "http://dribbble.com/system/users/1/screenshots/48351/shot_1282591933_teaser.png",
+      "width": 400,
+      "height": 300,
+      "views_count": 864,
+      "likes_count": 24,
+      "comments_count": 13,
+      "rebounds_count": 0,
+      "rebound_source_id": 43424,
+      "created_at": "2010/08/23 15:32:13 -0400",
+      "player": {
+        "id": 1,
+        "name": "Dan Cederholm",
+        "username": "simplebits",
+        "url": "http://dribbble.com/simplebits",
+        "avatar_url": "http://dribbble.com/system/users/1/avatars/original/dancederholm-peek.jpg",
+        "location": "Salem, MA",
+        "twitter_screen_name": "simplebits",
+        "drafted_by_player_id": null,
+        "shots_count": 147,
+        "draftees_count": 103,
+        "followers_count": 2027,
+        "following_count": 354,
+        "created_at": "2009/07/07 21:51:22 -0400"
+      }
     }
+  ]
+}
+			</div>
+			<h2>With JAYSUN (Not Collapsable)</h2>
+			
+			<div class="json2" id="json2">
+{
+  "page": 1,
+  "pages": 1,
+  "per_page": 15,
+  "total": 2,
+  "shots": [
+    {
+      "id": 48351,
+      "title": "Slow and steady wins the race.",
+      "url": "http://dribbble.com/shots/48351-Slow-and-steady-wins-the-race",
+      "short_url": "http://drbl.in/48351",
+      "image_url": "http://dribbble.com/system/users/1/screenshots/48351/shot_1282591933.png",
+      "image_teaser_url": "http://dribbble.com/system/users/1/screenshots/48351/shot_1282591933_teaser.png",
+      "width": 400,
+      "height": 300,
+      "views_count": 864,
+      "likes_count": 24,
+      "comments_count": 13,
+      "rebounds_count": 0,
+      "rebound_source_id": 43424,
+      "created_at": "2010/08/23 15:32:13 -0400",
+      "player": {
+        "id": 1,
+        "name": "Dan Cederholm",
+        "username": "simplebits",
+        "url": "http://dribbble.com/simplebits",
+        "avatar_url": "http://dribbble.com/system/users/1/avatars/original/dancederholm-peek.jpg",
+        "location": "Salem, MA",
+        "twitter_screen_name": "simplebits",
+        "drafted_by_player_id": null,
+        "shots_count": 147,
+        "draftees_count": 103,
+        "followers_count": 2027,
+        "following_count": 354,
+        "created_at": "2009/07/07 21:51:22 -0400"
+      }
+    }
+  ]
 }
 				
 			</div>
