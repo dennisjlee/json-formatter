@@ -1,43 +1,45 @@
-# JSONFormatter.js (beta)
+# Jaysun.js (beta)
 
-JSONFormatter takes JSON and renders it into an HTML list.
+Jaysun takes JSON and renders it into an HTML list, Based on JSONFormatter by github.com/forward
 
-[View a demo](http://forward.github.com/json-formatter/)
+[View a demo](http://www.peartreefigtree.com)
 
 ## Basic usage
 
 This library requires jQuery
 
-The basic usage for JSONFormatter is passing in the JSON and an empty options object:
+Create an instance of the function on the object that contains unformatted JSON:
 
-    JSONFormatter.format(json, {});
+    $(document).ready(function(){
+			
+		$('.json').Jaysun({
+		  collapse: true, // Setting to 'true' this will format the JSON into a collapsable/expandable tree
+		  closed:false //This only is valid if collapse is true, sets if the objects are visible or not
+		});
+		
+	});
 
 ## Options
 
-An options object can can be passed as a second parameter to the format function call (defaults shown):
+Options may be passed to the function shown below:
 
-    JSONFormatter.format(json, {
-      collapse: false, // Setting to 'true' this will format the JSON into a collapsable/expandable tree
-      append_to: 'body', // A string of the id, class or element name to append the formatted json
-      list_id: 'json' // The name of the id at the root ul of the formatted JSON
-    })
+      'listID' : The id for the lists
+      'collapse' : Determines if the lists are collapsable
+      'closed': Determines the default state for the collapsable lists
+      'closeIcon': Icon used for when closed
+      'openIcon': Icon used for when collapsed
+      'resultElement': The ID or class of the element in which to put the result of the format, can be the same as the instanced object
 
 ## Styling
 
 A basic stylesheet is available to layout the list slightly nicer than the default styles.
 
-    <link href='jsonFormatter.css' media='all' rel='stylesheet' type='text/css' />
-    
-## To do:
-
-  * Fix the object of objects - don't output 0:, 1:, 2:, etc.
-  * Fix array of strings in first child node
-  * General refactor - lots of code duplication
+    <link href='jaysun.css' rel='stylesheet' />
 
 ## Development
 
-Source hosted at [GitHub](http://github.com/forward/json-formatter).
-Report Issues/Feature requests on [GitHub Issues](http://github.com/forward/json-formatter/issues).
+Source hosted at [GitHub](http://github.com/andrefigueira/json-formatter).
+Report Issues/Feature requests on [GitHub Issues](http://github.com/andrefigueira/json-formatter/issues).
 
 ### Note on Patches/Pull Requests
 
@@ -51,4 +53,4 @@ Report Issues/Feature requests on [GitHub Issues](http://github.com/forward/json
 
 ## Copyright
 
-Copyright (c) 2012 Forward. See [LICENSE](https://github.com/forward/json-formatter/blob/master/LICENSE) for details.
+Copyright (c) 2012 André Figueira. See [LICENSE](https://github.com/andrefigueira/json-formatter/blob/master/LICENSE) for details.
