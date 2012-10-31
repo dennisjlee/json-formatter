@@ -1,4 +1,4 @@
-# Jaysun.js (beta)
+# Jaysun.js Version 1.0
 
 Jaysun takes JSON and renders it into an HTML list, Based on JSONFormatter by github.com/forward
 
