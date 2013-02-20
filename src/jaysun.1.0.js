@@ -229,6 +229,7 @@
 		    
 		}
 		
+		$('.toggle').die('click');
 		$('.toggle').live('click', function() {
 		
 		  if($(this).next().next().is(':visible'))
