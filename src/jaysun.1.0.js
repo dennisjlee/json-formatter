@@ -229,8 +229,8 @@
 
         }
 
-        $('.toggle').die('click');
-        $('.toggle').live('click', function() {
+        $('.toggle').off('click');
+        $('.toggle').on('click', function() {
 
           if($(this).next().next().is(':visible'))
           {
